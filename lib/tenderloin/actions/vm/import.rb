@@ -13,7 +13,7 @@ module Tenderloin
               @runner.vm_id = (0...15).map{ ('a'..'z').to_a[rand(26)] }.join
               vmdir = File.join(Tenderloin::Env.vms_path, @runner.vm_id)
 
-              FileUtils.mkdir_p(vmdir) unless Dir.exists?(vmdir)
+              FileUtils.mkdir_p(vmdir) unless File.directory?(vmdir)
 
               # Copy the VMX over
               FileUtils.cp(Tenderloin::Env.box.vmx_file, File.join(vmdir, @runner.vm_id + ".vmx"))
