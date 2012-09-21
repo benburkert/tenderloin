@@ -56,21 +56,29 @@ Currently base boxes are built manually. The process:
 * Install VMWare additions
 * Ensure you have a single .vmdk disk. If not, convert with:
 
-    /Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -r Virtual\ Disk.vmdk -t 0 precise64.vmdk
+``` shell
+/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -r Virtual\ Disk.vmdk -t 0 precise64.vmdk
+```
 
 and then edit the vmx to point to this.
 
 * Compress and shrink the disk
 
-    /Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -d precise64.vmdk
-    /Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -k precise64.vmdk
+``` shell
+/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -d precise64.vmdk
+/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -k precise64.vmdk
+```
 
 * Create a Tenderfile. Example:
 
-    Tenderloin::Config.run do |config|
-        config.vm.box_vmx = "precise64.vmx"
-    end
+``` ruby
+Tenderloin::Config.run do |config|
+  config.vm.box_vmx = "precise64.vmx"
+end
+```
 
 * Tar them up as a .box
 
-    tar -cvf precise64.box precise64.vmx Tenderfile precise64.vmdk
+``` shell
+tar -cvf precise64.box precise64.vmx Tenderfile precise64.vmdk
+```
