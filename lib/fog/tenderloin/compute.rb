@@ -16,7 +16,9 @@ module Fog
       request_path 'fog/tenderloin/requests/compute'
       request :list_vms
       request :get_vm
-      # request :delete_vm
+      request :start_vm
+      request :stop_vm
+      request :destroy_vm
 
       class Mock
 
