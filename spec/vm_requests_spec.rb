@@ -6,7 +6,7 @@ describe "VMRequests" do
   describe "ListRequest" do
     it "lists available vms" do
       res = get_compute.list_vms
-      res.should_not be_empty?
+      res.should_not be_empty
     end
   end
 end

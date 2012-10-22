@@ -12,7 +12,7 @@ module Fog
       # collection  :servers
 
       request_path 'fog/tenderloin/requests/compute'
-      # request :list_vms
+      request :list_vms
       # request :lookup_vm
       # request :delete_vm
 
