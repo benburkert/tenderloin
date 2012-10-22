@@ -15,7 +15,7 @@ module Fog
 
       request_path 'fog/tenderloin/requests/compute'
       request :list_vms
-      # request :lookup_vm
+      request :get_vm
       # request :delete_vm
 
       class Mock
@@ -38,6 +38,8 @@ module Fog
         def request(params, json_resp=false)
           params = params.join(" ") if params.kind_of? Array
           ret = `#{@loin_cmd} #{params}`
+
+          raise "Error running command:\n#{ret}" if $? != 0
 
           if json_resp
             Fog::JSON.decode(ret)
