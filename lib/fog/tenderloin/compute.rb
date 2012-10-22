@@ -7,6 +7,8 @@ module Fog
   module Compute
     class Tenderloin < Fog::Service
 
+      recognizes :loin_cmd, :loinfile_glob
+
       model_path 'fog/tenderloin/models/compute'
       # model       :server
       # collection  :servers
@@ -30,7 +32,7 @@ module Fog
 
         def initialize(options)
           @vm_glob     = options[:loinfile_glob] || "**/*.loin"
-          @loin_cmd    = options[:loin_bin] || "loin"
+          @loin_cmd    = options[:loin_cmd]      || "loin"
         end
 
         def request(params, json_resp=false)
