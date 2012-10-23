@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "fog",  "~> 1.6"
   s.add_runtime_dependency "json", "~> 1.7"
+  s.add_runtime_dependency "tenderloin", "~> 0.4.3"
 end
