@@ -4,7 +4,7 @@ module Fog
       class Real
 
         def get_vm(id)
-          request(['jsondump', '-f', id], true)
+          request(['jsondump', '-f', id], true).merge({:id => id})
         end
 
       end

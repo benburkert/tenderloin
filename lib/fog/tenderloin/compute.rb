@@ -10,8 +10,8 @@ module Fog
       recognizes :loin_cmd, :loinfile_glob
 
       model_path 'fog/tenderloin/models/compute'
-      # model       :server
-      # collection  :servers
+      model       :server
+      collection  :servers
 
       request_path 'fog/tenderloin/requests/compute'
       request :list_vms
@@ -44,11 +44,29 @@ module Fog
           raise "Error running command:\n#{ret}" if $? != 0
 
           if json_resp
-            Fog::JSON.decode(ret)
+            to_dotted_hash(Fog::JSON.decode(ret))
           else
             ret
           end
         end
+
+        def to_dotted_hash(source, target = {}, namespace = nil)
+          prefix = "#{namespace}." if namespace
+          case source
+          when Hash
+            source.each do |key, value|
+              to_dotted_hash(value, target, "#{prefix}#{key}")
+            end
+          when Array
+            source.each_with_index do |value, index|
+              to_dotted_hash(value, target, "#{prefix}#{index}")
+            end
+          else
+            target[namespace] = source
+          end
+          target
+        end
+
 
       end
     end
