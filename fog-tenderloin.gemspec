@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
   # s.test_files = Dir.glob("spec/**/*")
 
   s.add_runtime_dependency "fog",  "~> 1.6"
-  s.add_runtime_dependency "json", "~> 1.7"
+  s.add_runtime_dependency "json"
   s.add_runtime_dependency "tenderloin", "~> 0.4.3"
 end
