@@ -141,6 +141,7 @@ module Fog
         setup_default_attributes
 
         attribute :memory
+        attribute :cpus
         attribute :name
         attribute :message
         attribute :expiry
@@ -180,6 +181,7 @@ module Fog
 
           attributes[:cube] = cube.kind_of?(Cube) ? cube.name : cube
           attributes[:memory] = memory.to_i
+          attributes[:cpus] = cpus.to_i
 
           data = connection.remote_create_vm(attributes)
 
