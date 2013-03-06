@@ -11,6 +11,7 @@ module Fog
     class Octocloud < Fog::Service
       VMRUN = "/Applications/VMware\\ Fusion.app/Contents/Library/vmrun"
 
+      requires   :octocloud_url, :octocloud_api_key
       recognizes :local_dir, :octocloud_api_key, :octocloud_url
 
       model_path 'fog/octocloud/models/compute'
